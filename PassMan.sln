@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassMan.Desktop", "PassMan.Desktop\PassMan.Desktop.csproj", "{2C91F2CA-F48C-4F7E-9131-AEBC839205CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassMan.Core", "PassMan.Core\PassMan.Core.csproj", "{BE76B053-2602-4813-A252-6B3987C8CB80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C91F2CA-F48C-4F7E-9131-AEBC839205CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C91F2CA-F48C-4F7E-9131-AEBC839205CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C91F2CA-F48C-4F7E-9131-AEBC839205CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C91F2CA-F48C-4F7E-9131-AEBC839205CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE76B053-2602-4813-A252-6B3987C8CB80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE76B053-2602-4813-A252-6B3987C8CB80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE76B053-2602-4813-A252-6B3987C8CB80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE76B053-2602-4813-A252-6B3987C8CB80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6FE33DA6-7C2C-4148-A9AF-FD6CEB0D118A}
+	EndGlobalSection
+EndGlobal
