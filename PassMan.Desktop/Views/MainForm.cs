@@ -3,6 +3,7 @@ using PassMan.Core.Utils;
 using PassMan.Core.Models;
 using PassMan.Desktop.Views.Users;
 using PassMan.Desktop.Views.Vaults;
+using System.Diagnostics;
 
 namespace Mobiles.Desktop.Views
 {
@@ -39,6 +40,11 @@ namespace Mobiles.Desktop.Views
 
         private void VaultsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (User.LoggedInUser == null)
+            {
+                return;
+            }
+            
             ClearRootControls();
             VaultsForm form = new()
             {

@@ -28,9 +28,12 @@ namespace PassMan.Desktop.Views.Users
             string password = passwordTxt.Text;
 
             var dbContext = Program.GetDbContext();
-            //dbContext.Users.
+            if (!dbContext.loginUser(username, password))
+            {
+                return false;
+            }
 
-            return false;
+            return true;
         }
     }
 }

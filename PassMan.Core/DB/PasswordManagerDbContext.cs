@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PassMan.Core.Models;
+using System.Diagnostics;
 using System.Reflection.Metadata;
 
 namespace PassMan.Core.DB
@@ -15,10 +16,6 @@ namespace PassMan.Core.DB
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Vault>()
-               .HasOne(el => el.user)
-               .WithMany()
-               .OnDelete(DeleteBehavior.Restrict);
             base.OnModelCreating(modelBuilder);
         }
 
@@ -30,8 +27,34 @@ namespace PassMan.Core.DB
         public bool registerUser(User user)
         {
             this.Users.Add(user);
+            this.SaveChanges();
 
+            return true;
+        }
 
+        public bool loginUser(string username, string password)
+        {
+            var user = this.Users.ToList<User>().Find(x => x.Username == username);
+            if (user != null && Encrypter.Decrypt(user.Email, user.Password) == password)
+            {
+                User.LoggedInUser = user;
+                return true;
+            }
+            return false;
+        }
+
+        public bool addVault(Vault vault)
+        {
+            this.Vault.Add(vault);
+            this.SaveChanges();
+            return true;
+        }
+
+        public bool deleteVault(Vault vault)
+        {
+            var item = this.Vault.Find(vault.Id);
+            this.Vault.Remove(item);
+            this.SaveChanges();
             return true;
         }
     }

@@ -7,6 +7,7 @@ namespace PassMan.Core.Models
     [Table("User")]
     public class User
     {
+        public static User ?LoggedInUser;
         [Key, Required]
         public string Username { get; set; }
 

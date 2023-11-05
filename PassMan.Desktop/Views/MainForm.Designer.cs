@@ -30,12 +30,12 @@
         {
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VaultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RootPanel = new System.Windows.Forms.Panel();
-            this.LoginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,11 +61,26 @@
             this.FileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.FileToolStripMenuItem.Text = "File";
             // 
+            // LoginToolStripMenuItem
+            // 
+            this.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem";
+            this.LoginToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.LoginToolStripMenuItem.Text = "Login";
+            this.LoginToolStripMenuItem.Click += new System.EventHandler(this.LoginToolStripMenuItem_Click);
+            // 
+            // RegisterToolStripMenuItem
+            // 
+            this.RegisterToolStripMenuItem.Name = "RegisterToolStripMenuItem";
+            this.RegisterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.RegisterToolStripMenuItem.Text = "Register";
+            this.RegisterToolStripMenuItem.Click += new System.EventHandler(this.RegisterToolStripMenuItem_Click);
+            // 
             // VaultsToolStripMenuItem
             // 
             this.VaultsToolStripMenuItem.Name = "VaultsToolStripMenuItem";
             this.VaultsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.VaultsToolStripMenuItem.Text = "Vaults";
+            this.VaultsToolStripMenuItem.Click += new System.EventHandler(this.VaultsToolStripMenuItem_Click);
             // 
             // ExitToolStripMenuItem
             // 
@@ -89,20 +104,6 @@
             this.RootPanel.Name = "RootPanel";
             this.RootPanel.Size = new System.Drawing.Size(800, 492);
             this.RootPanel.TabIndex = 1;
-            // 
-            // LoginToolStripMenuItem
-            // 
-            this.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem";
-            this.LoginToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.LoginToolStripMenuItem.Text = "Login";
-            this.LoginToolStripMenuItem.Click += new System.EventHandler(this.LoginToolStripMenuItem_Click);
-            // 
-            // RegisterToolStripMenuItem
-            // 
-            this.RegisterToolStripMenuItem.Name = "RegisterToolStripMenuItem";
-            this.RegisterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.RegisterToolStripMenuItem.Text = "Register";
-            this.RegisterToolStripMenuItem.Click += new System.EventHandler(this.RegisterToolStripMenuItem_Click);
             // 
             // MainForm
             // 

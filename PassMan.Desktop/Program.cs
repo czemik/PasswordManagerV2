@@ -10,8 +10,6 @@ namespace PassMan.Desktop
 {
     internal static class Program
     {
-        internal static User ?loggedInUser;
-
         internal static string GetConnectionName() => ConfigurationManager.AppSettings["Connection"]
                 ?? throw new KeyNotFoundException($"Application setting 'Connection' not found.");
 
