@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
+using PassMan.Core;
 using PassMan.Core.DB;
 using PassMan.Core.Models;
 
@@ -22,9 +19,17 @@ namespace PassMan.Web.Controllers
         // GET: Vaults
         public async Task<IActionResult> Index()
         {
-              return _context.Vault != null ? 
-                          View(await _context.Vault.ToListAsync()) :
-                          Problem("Entity set 'PasswordManagerDbContext.Vault'  is null.");
+            if (_context.Vault == null || Core.Models.User.LoggedInUser == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
+            var vaults = await _context.Vault.Where(predicate: e => e.UserId == Core.Models.User.LoggedInUser!.Username).ToListAsync();
+            foreach (var item in vaults)
+            {
+                item.Password = Encrypter.Decrypt(Core.Models.User.LoggedInUser!.Email, item.Password);
+            }
+            return View(vaults);
+                        
         }
 
         // GET: Vaults/Details/5
@@ -41,7 +46,7 @@ namespace PassMan.Web.Controllers
             {
                 return NotFound();
             }
-
+            vault.Password = Encrypter.Decrypt(Core.Models.User.LoggedInUser!.Email, vault.Password);
             return View(vault);
         }
 
@@ -58,8 +63,13 @@ namespace PassMan.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,UserId,Username,Password,Website")] Vault vault)
         {
-            if (ModelState.IsValid)
+            if (
+                !String.IsNullOrEmpty(vault.Username) &&
+                !String.IsNullOrEmpty(vault.Password) &&
+                !String.IsNullOrEmpty(vault.Website)
+                )
             {
+                vault.Password = Encrypter.Encrypt(Core.Models.User.LoggedInUser!.Email, vault.Password);
                 _context.Add(vault);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,6 +90,7 @@ namespace PassMan.Web.Controllers
             {
                 return NotFound();
             }
+            vault.Password = Encrypter.Decrypt(Core.Models.User.LoggedInUser!.Email, vault.Password);
             return View(vault);
         }
 
@@ -99,6 +110,7 @@ namespace PassMan.Web.Controllers
             {
                 try
                 {
+                    vault.Password = Encrypter.Encrypt(Core.Models.User.LoggedInUser!.Email, vault.Password);
                     _context.Update(vault);
                     await _context.SaveChangesAsync();
                 }

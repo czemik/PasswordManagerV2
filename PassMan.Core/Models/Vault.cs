@@ -12,16 +12,16 @@ namespace PassMan.Core.Models
         public int? Id { get; set; }
 
         [ForeignKey("User"), Required, Browsable(false)]
-        public string UserId { get; set; }
+        public string? UserId { get; set; }
 
         [Required, DisplayName("Username")]
-        public string Username { get; set; }
+        public string? Username { get; set; }
 
         [Required, DisplayName("Password")]
-        public string Password { get; set; }
+        public string? Password { get; set; }
 
         [Required, DisplayName("Website")]
-        public string Website { get; set; }
+        public string? Website { get; set; }
 
         public Vault() { }
         public Vault (int Id, string UserId, string Username, string Password, string Website)
