@@ -2,3 +2,7 @@ PassMan.Core/bin
 PassMan.Core/obj
 PassMan.Desktop/bin
 PassMan.Desktop/obj
+PassMan.Web/obj
+PassMan.Web/bin
+PassMan.Web/wwwroot/lib
+.vs

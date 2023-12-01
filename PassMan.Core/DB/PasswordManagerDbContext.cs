@@ -21,6 +21,7 @@ namespace PassMan.Core.DB
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseSqlite();
             base.OnConfiguring(optionsBuilder);
         }
 
