@@ -4,12 +4,15 @@
     ViewData["Title"] = "Index";
 }
 
+<script src="~/lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
+<link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table datatable">
     <thead>
         <tr>
             <th>
@@ -51,3 +54,24 @@
 }
     </tbody>
 </table>
+
+<script>
+    async function setupTable(table) {
+        console.debug(`Setting up table: ${table}`);
+        console.debug(table);
+        console.debug(">>> Marking table as dataTable.");
+        console.debug(new DataTable(table));
+    }
+
+    try {
+        $(document).ready(async () => {
+            console.debug("Document loading finished :: Running post setup scripts");
+            const dtables = $(".datatable").toArray();
+            console.debug(">>> Setting up datatables ...");
+            dtables.filter(el => el instanceof HTMLTableElement).forEach(await setupTable);
+        })
+    }
+    catch (err) {
+        console.error(err);
+    }
+</script>
